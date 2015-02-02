@@ -1,0 +1,4 @@
+/**
+ * shibain.
+ */
+package akihyro.shibain;
