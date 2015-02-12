@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--=================================================================================================================
+ | メインビュー
+ +===================================================================================================================-->
+
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.web.*?>
+
+<VBox fx:id="root"
+    fx:controller="akihyro.shibain.MainController"
+    xmlns="http://javafx.com/javafx/8"
+    xmlns:fx="http://javafx.com/fxml">
+
+    <stylesheets>
+        <URL value="@main.css" />
+    </stylesheets>
+
+    <HBox fx:id="buttons">
+        <Button text="出勤"
+                maxWidth="Infinity"
+                HBox.hgrow="ALWAYS"
+                onAction="#checkin" />
+        <Button text="退勤"
+                maxWidth="Infinity"
+                HBox.hgrow="ALWAYS"
+                onAction="#checkout" />
+    </HBox>
+
+    <WebView fx:id="webView" VBox.vgrow="ALWAYS" />
+
+</VBox>
