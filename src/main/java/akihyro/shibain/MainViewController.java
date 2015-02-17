@@ -5,6 +5,8 @@ import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.web.WebView;
 
 /**
@@ -47,7 +49,13 @@ public class MainViewController implements Initializable {
     public void checkin() throws Exception {
         tsubaisoController.loadLoginPage()
                 .thenCompose((v) -> tsubaisoController.login(id, password))
-                .thenCompose((v) -> tsubaisoController.punchIn());
+                .thenCompose((v) -> tsubaisoController.punchIn())
+                .thenRun(() -> {
+                    Alert alert = new Alert(AlertType.INFORMATION);
+                    alert.setHeaderText("出勤");
+                    alert.setContentText("出勤しました！");
+                    alert.show();
+                });
     }
 
     /**
@@ -58,7 +66,13 @@ public class MainViewController implements Initializable {
     public void checkout() throws Exception {
         tsubaisoController.loadLoginPage()
                 .thenCompose((v) -> tsubaisoController.login(id, password))
-                .thenCompose((v) -> tsubaisoController.punchOut());
+                .thenCompose((v) -> tsubaisoController.punchOut())
+                .thenRun(() -> {
+                    Alert alert = new Alert(AlertType.INFORMATION);
+                    alert.setHeaderText("退勤");
+                    alert.setContentText("退勤しました！");
+                    alert.show();
+                });
     }
 
     /**
