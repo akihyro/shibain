@@ -7,6 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.web.*?>
+<?import org.controlsfx.glyphfont.*?>
 
 <VBox fx:id="root"
     fx:controller="akihyro.shibain.MainController"
@@ -17,15 +18,31 @@
         <URL value="@main.css" />
     </stylesheets>
 
-    <HBox fx:id="buttons">
-        <Button text="出勤"
+    <HBox fx:id="buttonBar">
+        <Button fx:id="checkinButton"
+                text="出勤"
                 maxWidth="Infinity"
                 HBox.hgrow="ALWAYS"
-                onAction="#checkin" />
-        <Button text="退勤"
+                styleClass="button"
+                onAction="#checkin">
+            <graphic>
+                <Glyph fontFamily="FontAwesome"
+                       icon="SIGN_IN"
+                       styleClass="buttonIcon" />
+            </graphic>
+        </Button>
+        <Button fx:id="checkoutButton"
+                text="退勤"
                 maxWidth="Infinity"
                 HBox.hgrow="ALWAYS"
-                onAction="#checkout" />
+                styleClass="button"
+                onAction="#checkout">
+            <graphic>
+                <Glyph fontFamily="FontAwesome"
+                       icon="SIGN_OUT"
+                       styleClass="buttonIcon" />
+            </graphic>
+        </Button>
     </HBox>
 
     <WebView fx:id="webView" VBox.vgrow="ALWAYS" />

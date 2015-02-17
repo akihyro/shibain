@@ -3,13 +3,24 @@
  **********************************************************************************************************************/
 
 #root {
-    -fx-pref-height: 400px;
-    -fx-pref-width: 600px;
+    -fx-pref-width: 600;
 }
 
-#buttons Button {
-    -fx-font-size: 32px;
+#buttonBar {
+    -fx-padding: 10;
+    -fx-spacing: 10;
+}
+
+#buttonBar .button {
+    -fx-font-size: 50;
+    -fx-graphic-text-gap: 30;
+}
+
+#buttonBar .buttonIcon {
+    -fx-font-family: FontAwesome;
+    -fx-font-size: 50;
 }
 
 #webView {
+    -fx-pref-height: 0;
 }
