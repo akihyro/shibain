@@ -43,6 +43,15 @@
                        styleClass="buttonIcon" />
             </graphic>
         </Button>
+        <Button fx:id="configButton"
+                styleClass="button"
+                onAction="#config">
+            <graphic>
+                <Glyph fontFamily="FontAwesome"
+                       icon="GEAR"
+                       styleClass="buttonIcon" />
+            </graphic>
+        </Button>
     </HBox>
 
     <WebView fx:id="webView" VBox.vgrow="ALWAYS" />

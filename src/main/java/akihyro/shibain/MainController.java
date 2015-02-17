@@ -44,6 +44,8 @@ public class MainController implements Initializable {
 
     /**
      * 出勤する。
+     *
+     * @throws Exception エラーが発生した場合。
      */
     public void checkin() throws Exception {
         loadLoginPage()
@@ -53,11 +55,22 @@ public class MainController implements Initializable {
 
     /**
      * 退勤する。
+     *
+     * @throws Exception エラーが発生した場合。
      */
     public void checkout() throws Exception {
         loadLoginPage()
                 .thenCompose((v) -> login())
                 .thenCompose((v) -> punchOut());
+    }
+
+    /**
+     * 設定する。
+     *
+     * @throws Exception エラーが発生した場合。
+     */
+    public void config() throws Exception {
+        // TODO: 後で実装する
     }
 
     /**

@@ -12,13 +12,13 @@
 }
 
 #buttonBar .button {
-    -fx-font-size: 50;
-    -fx-graphic-text-gap: 30;
+    -fx-font-size: 40;
+    -fx-graphic-text-gap: 20;
 }
 
 #buttonBar .buttonIcon {
     -fx-font-family: FontAwesome;
-    -fx-font-size: 50;
+    -fx-font-size: 40;
 }
 
 #webView {
