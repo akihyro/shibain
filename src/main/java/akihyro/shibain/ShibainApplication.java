@@ -15,6 +15,15 @@ import javafx.stage.Stage;
 public class ShibainApplication extends Application {
 
     /**
+     * エントリポイント。
+     *
+     * @param args パラメータ。
+     */
+    public static void main(String[] args) {
+        launch(args);
+    }
+
+    /**
      * 開始する。
      *
      * @param stage ステージ。
@@ -22,25 +31,12 @@ public class ShibainApplication extends Application {
      */
     @Override
     public void start(Stage stage) throws Exception {
-
         URL fxmlLocation = ShibainApplication.class.getResource("main.fxml");
         Parent root = FXMLLoader.load(fxmlLocation);
-
         Scene scene = new Scene(root);
         stage.setScene(scene);
-
-        stage.setTitle("Shibain!!");
+        stage.setTitle("shibain");
         stage.show();
-
-    }
-
-    /**
-     * エントリポイント。
-     *
-     * @param args パラメータ。
-     */
-    public static void main(String[] args) {
-        launch(args);
     }
 
 }

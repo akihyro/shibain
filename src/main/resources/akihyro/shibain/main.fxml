@@ -10,7 +10,7 @@
 <?import org.controlsfx.glyphfont.*?>
 
 <VBox fx:id="root"
-    fx:controller="akihyro.shibain.MainController"
+    fx:controller="akihyro.shibain.MainViewController"
     xmlns="http://javafx.com/javafx/8"
     xmlns:fx="http://javafx.com/fxml">
 

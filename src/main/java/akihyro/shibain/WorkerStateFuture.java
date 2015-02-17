@@ -10,6 +10,9 @@ import javafx.concurrent.Worker.State;
 
 /**
  * ワーカーステートフューチャー。
+ *
+ * {@link State} の完了状態に依存する処理を制御する為に利用する。
+ * {@link State} の変化を監視し、 {@link State} の完了に合わせて本フューチャーも完了とする。
  */
 public class WorkerStateFuture extends CompletableFuture<Void> {
 
