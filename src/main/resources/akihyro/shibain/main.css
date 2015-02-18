@@ -6,21 +6,32 @@
     -fx-pref-width: 600;
 }
 
-#buttonBar {
+.opsBar {
     -fx-padding: 10;
     -fx-spacing: 10;
 }
 
-#buttonBar .button {
+.opsButton {
     -fx-font-size: 40;
     -fx-graphic-text-gap: 20;
 }
 
-#buttonBar .buttonIcon {
+.opsButtonIcon {
     -fx-font-family: FontAwesome;
     -fx-font-size: 40;
 }
 
-#webView {
+.configGridPane {
+    -fx-alignment: center;
+    -fx-hgap: 10;
+    -fx-padding: 20 25 20 25;
+    -fx-vgap: 5;
+}
+
+.configTitleLabel {
+    -fx-font-weight: bold;
+}
+
+.webView {
     -fx-pref-height: 0;
 }

@@ -7,6 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.web.*?>
+<?import org.controlsfx.control.*?>
 <?import org.controlsfx.glyphfont.*?>
 
 <VBox fx:id="root"
@@ -18,42 +19,71 @@
         <URL value="@main.css" />
     </stylesheets>
 
-    <HBox fx:id="buttonBar">
-        <Button fx:id="checkinButton"
-                text="出勤"
+    <fx:define>
+        <PopOver fx:id="configPopOver"
+                autoFix="true"
+                autoHide="true"
+                arrowLocation="TOP_RIGHT"
+                detachedTitle="設定">
+            <contentNode>
+                <GridPane styleClass="configGridPane">
+                    <Label styleClass="configTitleLabel"
+                            text="設定"
+                            GridPane.rowIndex="0"
+                            GridPane.columnIndex="0"
+                            GridPane.columnSpan="2" />
+                    <Label text="User ID:"
+                            GridPane.rowIndex="2"
+                            GridPane.columnIndex="0" />
+                    <TextField fx:id="userIdField"
+                            GridPane.rowIndex="2"
+                            GridPane.columnIndex="1" />
+                    <Label text="Password:"
+                            GridPane.rowIndex="3"
+                            GridPane.columnIndex="0" />
+                    <PasswordField fx:id="passwordField"
+                            GridPane.rowIndex="3"
+                            GridPane.columnIndex="1" />
+                </GridPane>
+            </contentNode>
+        </PopOver>
+    </fx:define>
+
+    <HBox styleClass="opsBar">
+        <Button text="出勤"
                 maxWidth="Infinity"
                 HBox.hgrow="ALWAYS"
-                styleClass="button"
+                styleClass="opsButton"
                 onAction="#checkin">
             <graphic>
                 <Glyph fontFamily="FontAwesome"
                        icon="SIGN_IN"
-                       styleClass="buttonIcon" />
+                       styleClass="opsButtonIcon" />
             </graphic>
         </Button>
-        <Button fx:id="checkoutButton"
-                text="退勤"
+        <Button text="退勤"
                 maxWidth="Infinity"
                 HBox.hgrow="ALWAYS"
-                styleClass="button"
+                styleClass="opsButton"
                 onAction="#checkout">
             <graphic>
                 <Glyph fontFamily="FontAwesome"
                        icon="SIGN_OUT"
-                       styleClass="buttonIcon" />
+                       styleClass="opsButtonIcon" />
             </graphic>
         </Button>
-        <Button fx:id="configButton"
-                styleClass="button"
-                onAction="#config">
+        <Button styleClass="opsButton"
+                onAction="#toggleConfig">
             <graphic>
                 <Glyph fontFamily="FontAwesome"
                        icon="GEAR"
-                       styleClass="buttonIcon" />
+                       styleClass="opsButtonIcon" />
             </graphic>
         </Button>
     </HBox>
 
-    <WebView fx:id="webView" VBox.vgrow="ALWAYS" />
+    <WebView fx:id="webView"
+            VBox.vgrow="ALWAYS"
+            styleClass="webView" />
 
 </VBox>
