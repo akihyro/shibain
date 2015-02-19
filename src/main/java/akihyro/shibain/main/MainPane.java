@@ -3,7 +3,7 @@ package akihyro.shibain.main;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import akihyro.shibain.TsubaisoController;
+import akihyro.shibain.tsubaiso.TsubaisoController;
 import akihyro.shibain.config.ConfigPopOver;
 import static akihyro.shibain.util.FxmlLoadingUtils.loadControlledFxml;
 import javafx.event.ActionEvent;

@@ -1,5 +1,4 @@
-package akihyro.shibain;
-
+package akihyro.shibain.tsubaiso;
 
 import java.util.concurrent.CompletableFuture;
 
