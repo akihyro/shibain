@@ -6,9 +6,8 @@
 <?import java.net.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import org.controlsfx.control.*?>
 
-<fx:root type="PopOver"
+<fx:root type="akihyro.shibain.config.ConfigPopOver"
     autoFix="true"
     autoHide="true"
     arrowLocation="TOP_RIGHT"
@@ -16,29 +15,27 @@
     xmlns="http://javafx.com/javafx/8"
     xmlns:fx="http://javafx.com/fxml">
 
-    <contentNode>
-        <GridPane styleClass="grid">
-            <stylesheets>
-                <URL value="@ConfigPopOver.css" />
-            </stylesheets>
-            <Label styleClass="title"
-                    text="設定"
-                    GridPane.rowIndex="0"
-                    GridPane.columnIndex="0"
-                    GridPane.columnSpan="2" />
-            <Label text="ユーザID:"
-                    GridPane.rowIndex="2"
-                    GridPane.columnIndex="0" />
-            <TextField fx:id="userIdField"
-                    GridPane.rowIndex="2"
-                    GridPane.columnIndex="1" />
-            <Label text="パスワード:"
-                    GridPane.rowIndex="3"
-                    GridPane.columnIndex="0" />
-            <PasswordField fx:id="passwordField"
-                    GridPane.rowIndex="3"
-                    GridPane.columnIndex="1" />
-        </GridPane>
-    </contentNode>
+    <GridPane styleClass="grid">
+        <stylesheets>
+            <URL value="@ConfigPopOver.css" />
+        </stylesheets>
+        <Label styleClass="title"
+                text="設定"
+                GridPane.rowIndex="0"
+                GridPane.columnIndex="0"
+                GridPane.columnSpan="2" />
+        <Label text="ユーザID:"
+                GridPane.rowIndex="2"
+                GridPane.columnIndex="0" />
+        <TextField fx:id="userIdField"
+                GridPane.rowIndex="2"
+                GridPane.columnIndex="1" />
+        <Label text="パスワード:"
+                GridPane.rowIndex="3"
+                GridPane.columnIndex="0" />
+        <PasswordField fx:id="passwordField"
+                GridPane.rowIndex="3"
+                GridPane.columnIndex="1" />
+    </GridPane>
 
 </fx:root>

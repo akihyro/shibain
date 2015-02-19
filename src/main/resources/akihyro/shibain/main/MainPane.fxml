@@ -7,11 +7,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.web.*?>
-<?import org.controlsfx.control.*?>
 <?import org.controlsfx.glyphfont.*?>
-<?import akihyro.shibain.config.*?>
 
-<fx:root type="VBox"
+<fx:root type="akihyro.shibain.main.MainPane"
     xmlns="http://javafx.com/javafx/8"
     xmlns:fx="http://javafx.com/fxml">
 
@@ -53,7 +51,7 @@
     </HBox>
 
     <WebView fx:id="webView"
-            styleClass="webView"
-            VBox.vgrow="ALWAYS" />
+            VBox.vgrow="ALWAYS"
+            styleClass="webView" />
 
 </fx:root>

@@ -3,6 +3,7 @@ package akihyro.shibain.config;
 import org.controlsfx.control.PopOver;
 
 import static akihyro.shibain.util.FxmlLoadingUtils.loadControlledFxml;
+import javafx.beans.DefaultProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -10,6 +11,7 @@ import javafx.scene.control.TextField;
 /**
  * 設定ポップオーバー。
  */
+@DefaultProperty("contentNode")
 public class ConfigPopOver extends PopOver {
 
     /**
