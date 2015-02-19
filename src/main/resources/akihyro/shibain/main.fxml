@@ -9,6 +9,7 @@
 <?import javafx.scene.web.*?>
 <?import org.controlsfx.control.*?>
 <?import org.controlsfx.glyphfont.*?>
+<?import akihyro.shibain.config.*?>
 
 <VBox fx:id="root"
     fx:controller="akihyro.shibain.MainViewController"
@@ -20,33 +21,7 @@
     </stylesheets>
 
     <fx:define>
-        <PopOver fx:id="configPopOver"
-                autoFix="true"
-                autoHide="true"
-                arrowLocation="TOP_RIGHT"
-                detachedTitle="設定">
-            <contentNode>
-                <GridPane styleClass="configGridPane">
-                    <Label styleClass="configTitleLabel"
-                            text="設定"
-                            GridPane.rowIndex="0"
-                            GridPane.columnIndex="0"
-                            GridPane.columnSpan="2" />
-                    <Label text="User ID:"
-                            GridPane.rowIndex="2"
-                            GridPane.columnIndex="0" />
-                    <TextField fx:id="userIdField"
-                            GridPane.rowIndex="2"
-                            GridPane.columnIndex="1" />
-                    <Label text="Password:"
-                            GridPane.rowIndex="3"
-                            GridPane.columnIndex="0" />
-                    <PasswordField fx:id="passwordField"
-                            GridPane.rowIndex="3"
-                            GridPane.columnIndex="1" />
-                </GridPane>
-            </contentNode>
-        </PopOver>
+        <ConfigPopOver fx:id="configPopOver" />
     </fx:define>
 
     <HBox styleClass="opsBar">

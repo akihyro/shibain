@@ -3,8 +3,7 @@ package akihyro.shibain;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import org.controlsfx.control.PopOver;
-
+import akihyro.shibain.config.ConfigPopOver;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -12,8 +11,6 @@ import javafx.geometry.Bounds;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.web.WebView;
 
@@ -32,25 +29,13 @@ public class MainViewController implements Initializable {
      * 設定ポップオーバー。
      */
     @FXML
-    private PopOver configPopOver;
+    private ConfigPopOver configPopOver;
 
     /**
      * WEBビュー。
      */
     @FXML
     private WebView webView;
-
-    /**
-     * ユーザIDフィールド。
-     */
-    @FXML
-    private TextField userIdField;
-
-    /**
-     * パスワードフィールド。
-     */
-    @FXML
-    private PasswordField passwordField;
 
     /**
      * WEBエンジン。
@@ -64,24 +49,6 @@ public class MainViewController implements Initializable {
     }
 
     /**
-     * ユーザIDを取得する。
-     *
-     * @return ユーザID。
-     */
-    public String getUserId() {
-        return userIdField.getText();
-    }
-
-    /**
-     * パスワードを取得する。
-     *
-     * @return パスワード。
-     */
-    public String getPassword() {
-        return passwordField.getText();
-    }
-
-    /**
      * 出勤する。
      *
      * @param event イベント。
@@ -89,7 +56,7 @@ public class MainViewController implements Initializable {
      */
     public void checkin(ActionEvent event) throws Exception {
         tsubaisoController.loadLoginPage()
-                .thenCompose((v) -> tsubaisoController.login(getUserId(), getPassword()))
+                .thenCompose((v) -> tsubaisoController.login(configPopOver.getUserId(), configPopOver.getPassword()))
                 .thenCompose((v) -> tsubaisoController.punchIn())
                 .thenRun(() -> {
                     Alert alert = new Alert(AlertType.INFORMATION);
@@ -107,7 +74,7 @@ public class MainViewController implements Initializable {
      */
     public void checkout(ActionEvent event) throws Exception {
         tsubaisoController.loadLoginPage()
-                .thenCompose((v) -> tsubaisoController.login(getUserId(), getPassword()))
+                .thenCompose((v) -> tsubaisoController.login(configPopOver.getUserId(), configPopOver.getPassword()))
                 .thenCompose((v) -> tsubaisoController.punchOut())
                 .thenRun(() -> {
                     Alert alert = new Alert(AlertType.INFORMATION);
