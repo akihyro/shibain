@@ -19,10 +19,6 @@
         <URL value="@MainPane.css" />
     </stylesheets>
 
-    <fx:define>
-        <ConfigPopOver fx:id="configPopOver" />
-    </fx:define>
-
     <HBox styleClass="opsBar">
         <Button text="出勤"
                 maxWidth="Infinity"

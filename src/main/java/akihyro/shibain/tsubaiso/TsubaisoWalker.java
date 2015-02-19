@@ -7,9 +7,9 @@ import lombok.NonNull;
 import javafx.scene.web.WebEngine;
 
 /**
- * ツバイソコントローラ。
+ * ツバイソウォーカー。
  */
-public class TsubaisoController {
+public class TsubaisoWalker {
 
     /**
      * WEBエンジン。
@@ -21,7 +21,7 @@ public class TsubaisoController {
      *
      * @param engine WEBエンジン。
      */
-    public TsubaisoController(@NonNull WebEngine engine) {
+    public TsubaisoWalker(@NonNull WebEngine engine) {
         this.engine = engine;
     }
 

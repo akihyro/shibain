@@ -3,7 +3,7 @@ package akihyro.shibain.main;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import akihyro.shibain.tsubaiso.TsubaisoController;
+import akihyro.shibain.tsubaiso.TsubaisoWalker;
 import akihyro.shibain.config.ConfigPopOver;
 import static akihyro.shibain.util.FxmlLoadingUtils.loadControlledFxml;
 import javafx.event.ActionEvent;
@@ -21,21 +21,20 @@ import javafx.scene.web.WebView;
 public class MainPane extends VBox implements Initializable {
 
     /**
-     * 設定ポップオーバー。
-     */
-    @FXML
-    private ConfigPopOver configPopOver;
-
-    /**
      * WEBビュー。
      */
     @FXML
     private WebView webView;
 
     /**
-     * WEBエンジン。
+     * 設定ポップオーバー。
      */
-    private TsubaisoController tsubaisoController;
+    private ConfigPopOver configPopOver;
+
+    /**
+     * ツバイソウォーカー。
+     */
+    private TsubaisoWalker tsubaisoWalker;
 
     /**
      * コンストラクタ。
@@ -47,7 +46,8 @@ public class MainPane extends VBox implements Initializable {
     /** {@inheritDoc} */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        tsubaisoController = new TsubaisoController(webView.getEngine());
+        configPopOver = new ConfigPopOver();
+        tsubaisoWalker = new TsubaisoWalker(webView.getEngine());
     }
 
     /**
@@ -58,9 +58,9 @@ public class MainPane extends VBox implements Initializable {
      */
     @FXML
     protected void checkin(ActionEvent event) throws Exception {
-        tsubaisoController.loadLoginPage()
-                .thenCompose((v) -> tsubaisoController.login(configPopOver.getUserId(), configPopOver.getPassword()))
-                .thenCompose((v) -> tsubaisoController.punchIn())
+        tsubaisoWalker.loadLoginPage()
+                .thenCompose((v) -> tsubaisoWalker.login(configPopOver.getUserId(), configPopOver.getPassword()))
+                .thenCompose((v) -> tsubaisoWalker.punchIn())
                 .thenRun(() -> {
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setHeaderText("出勤");
@@ -77,9 +77,9 @@ public class MainPane extends VBox implements Initializable {
      */
     @FXML
     protected void checkout(ActionEvent event) throws Exception {
-        tsubaisoController.loadLoginPage()
-                .thenCompose((v) -> tsubaisoController.login(configPopOver.getUserId(), configPopOver.getPassword()))
-                .thenCompose((v) -> tsubaisoController.punchOut())
+        tsubaisoWalker.loadLoginPage()
+                .thenCompose((v) -> tsubaisoWalker.login(configPopOver.getUserId(), configPopOver.getPassword()))
+                .thenCompose((v) -> tsubaisoWalker.punchOut())
                 .thenRun(() -> {
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setHeaderText("退勤");
