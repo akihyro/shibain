@@ -56,7 +56,8 @@ public class MainPane extends VBox implements Initializable {
      * @param event イベント。
      * @throws Exception エラーが発生した場合。
      */
-    public void checkin(ActionEvent event) throws Exception {
+    @FXML
+    protected void checkin(ActionEvent event) throws Exception {
         tsubaisoController.loadLoginPage()
                 .thenCompose((v) -> tsubaisoController.login(configPopOver.getUserId(), configPopOver.getPassword()))
                 .thenCompose((v) -> tsubaisoController.punchIn())
@@ -74,7 +75,8 @@ public class MainPane extends VBox implements Initializable {
      * @param event イベント。
      * @throws Exception エラーが発生した場合。
      */
-    public void checkout(ActionEvent event) throws Exception {
+    @FXML
+    protected void checkout(ActionEvent event) throws Exception {
         tsubaisoController.loadLoginPage()
                 .thenCompose((v) -> tsubaisoController.login(configPopOver.getUserId(), configPopOver.getPassword()))
                 .thenCompose((v) -> tsubaisoController.punchOut())
@@ -92,7 +94,8 @@ public class MainPane extends VBox implements Initializable {
      * @param event イベント。
      * @throws Exception エラーが発生した場合。
      */
-    public void toggleConfig(ActionEvent event) throws Exception {
+    @FXML
+    protected void toggleConfig(ActionEvent event) throws Exception {
         if (!configPopOver.isShowing()) {
             Node node = Node.class.cast(event.getSource());
             Bounds bounds = node.localToScreen(node.getBoundsInLocal());
