@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--=================================================================================================================
+ | メインペイン FXML
+ +===================================================================================================================-->
+
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.web.*?>
+<?import org.controlsfx.control.*?>
+<?import org.controlsfx.glyphfont.*?>
+<?import akihyro.shibain.config.*?>
+
+<fx:root type="VBox"
+    xmlns="http://javafx.com/javafx/8"
+    xmlns:fx="http://javafx.com/fxml">
+
+    <stylesheets>
+        <URL value="@MainPane.css" />
+    </stylesheets>
+
+    <fx:define>
+        <ConfigPopOver fx:id="configPopOver" />
+    </fx:define>
+
+    <HBox styleClass="opsBar">
+        <Button text="出勤"
+                maxWidth="Infinity"
+                HBox.hgrow="ALWAYS"
+                styleClass="opsButton"
+                onAction="#checkin">
+            <graphic>
+                <Glyph fontFamily="FontAwesome"
+                       icon="SIGN_IN"
+                       styleClass="opsButtonIcon" />
+            </graphic>
+        </Button>
+        <Button text="退勤"
+                maxWidth="Infinity"
+                HBox.hgrow="ALWAYS"
+                styleClass="opsButton"
+                onAction="#checkout">
+            <graphic>
+                <Glyph fontFamily="FontAwesome"
+                       icon="SIGN_OUT"
+                       styleClass="opsButtonIcon" />
+            </graphic>
+        </Button>
+        <Button styleClass="opsButton"
+                onAction="#toggleConfig">
+            <graphic>
+                <Glyph fontFamily="FontAwesome"
+                       icon="GEAR"
+                       styleClass="opsButtonIcon" />
+            </graphic>
+        </Button>
+    </HBox>
+
+    <WebView fx:id="webView"
+            styleClass="webView"
+            VBox.vgrow="ALWAYS" />
+
+</fx:root>

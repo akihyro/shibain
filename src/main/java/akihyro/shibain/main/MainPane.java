@@ -1,29 +1,24 @@
-package akihyro.shibain;
+package akihyro.shibain.main;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import akihyro.shibain.TsubaisoController;
 import akihyro.shibain.config.ConfigPopOver;
+import static akihyro.shibain.util.FxmlLoadingUtils.loadControlledFxml;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Bounds;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.web.WebView;
 
 /**
- * メインビューコントローラ。
+ * メインペイン。
  */
-public class MainViewController implements Initializable {
-
-    /**
-     * ルート。
-     */
-    @FXML
-    private Pane root;
+public class MainPane extends VBox implements Initializable {
 
     /**
      * 設定ポップオーバー。
@@ -42,6 +37,13 @@ public class MainViewController implements Initializable {
      */
     private TsubaisoController tsubaisoController;
 
+    /**
+     * コンストラクタ。
+     */
+    public MainPane() {
+        loadControlledFxml(MainPane.class, this);
+    }
+
     /** {@inheritDoc} */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -59,7 +61,7 @@ public class MainViewController implements Initializable {
                 .thenCompose((v) -> tsubaisoController.login(configPopOver.getUserId(), configPopOver.getPassword()))
                 .thenCompose((v) -> tsubaisoController.punchIn())
                 .thenRun(() -> {
-                    Alert alert = new Alert(AlertType.INFORMATION);
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setHeaderText("出勤");
                     alert.setContentText("出勤しました！");
                     alert.show();
@@ -77,7 +79,7 @@ public class MainViewController implements Initializable {
                 .thenCompose((v) -> tsubaisoController.login(configPopOver.getUserId(), configPopOver.getPassword()))
                 .thenCompose((v) -> tsubaisoController.punchOut())
                 .thenRun(() -> {
-                    Alert alert = new Alert(AlertType.INFORMATION);
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setHeaderText("退勤");
                     alert.setContentText("退勤しました！");
                     alert.show();
@@ -94,7 +96,7 @@ public class MainViewController implements Initializable {
         if (!configPopOver.isShowing()) {
             Node node = Node.class.cast(event.getSource());
             Bounds bounds = node.localToScreen(node.getBoundsInLocal());
-            configPopOver.show(root,
+            configPopOver.show(this,
                     bounds.getMinX() + bounds.getWidth() / 2,
                     bounds.getMinY() + bounds.getHeight() - 10);
         } else {

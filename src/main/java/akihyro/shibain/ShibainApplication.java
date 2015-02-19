@@ -1,11 +1,8 @@
 package akihyro.shibain;
 
-
-import java.net.URL;
+import akihyro.shibain.main.MainPane;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -31,10 +28,7 @@ public class ShibainApplication extends Application {
      */
     @Override
     public void start(Stage stage) throws Exception {
-        URL fxmlLocation = ShibainApplication.class.getResource("main.fxml");
-        Parent root = FXMLLoader.load(fxmlLocation);
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
+        stage.setScene(new Scene(new MainPane()));
         stage.setTitle("shibain");
         stage.show();
     }
