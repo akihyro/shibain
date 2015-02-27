@@ -7,13 +7,15 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root type="akihyro.shibain.config.ConfigPopOver"
-    autoFix="true"
-    autoHide="true"
-    arrowLocation="TOP_RIGHT"
-    detachedTitle="設定"
-    xmlns="http://javafx.com/javafx/8"
-    xmlns:fx="http://javafx.com/fxml">
+<fx:root fx:id="root"
+        type="akihyro.shibain.config.ConfigPopOver"
+        fx:controller="akihyro.shibain.config.ConfigPopOverController"
+        autoFix="true"
+        autoHide="true"
+        arrowLocation="TOP_RIGHT"
+        detachedTitle="設定"
+        xmlns="http://javafx.com/javafx/8"
+        xmlns:fx="http://javafx.com/fxml">
 
     <GridPane styleClass="grid">
         <stylesheets>

@@ -27,10 +27,10 @@ public final class FxmlLoadingUtils {
      * @param <T> ロード結果タイプ。
      * @param location ロケーション。
      * @param root ルートオブジェクト。
-     * @return ロード結果。
+     * @return ローダ。
      */
-    public static <T> T loadControlledFxml(@NonNull Class<?> location, @NonNull Object root) {
-        return loadControlledFxml(location.getResource(location.getSimpleName() + ".fxml"), root);
+    public static FXMLLoader loadFxml(@NonNull Class<?> location, @NonNull Object root) {
+        return loadFxml(location.getResource(location.getSimpleName() + ".fxml"), root);
     }
 
     /**
@@ -39,17 +39,17 @@ public final class FxmlLoadingUtils {
      * @param <T> ロード結果タイプ。
      * @param location ロケーション。
      * @param root ルートオブジェクト。
-     * @return ロード結果。
+     * @return ローダ。
      */
-    public static <T> T loadControlledFxml(@NonNull URL location, @NonNull Object root) {
+    public static FXMLLoader loadFxml(@NonNull URL location, @NonNull Object root) {
         FXMLLoader loader = new FXMLLoader(location);
         loader.setRoot(root);
-        loader.setController(root);
         try {
-            return loader.load();
+            loader.load();
         } catch (IOException exc) {
             throw new RuntimeException(exc);
         }
+        return loader;
     }
 
 }

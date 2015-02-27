@@ -2,11 +2,9 @@ package akihyro.shibain.config;
 
 import org.controlsfx.control.PopOver;
 
-import static akihyro.shibain.util.FxmlLoadingUtils.loadControlledFxml;
+import static akihyro.shibain.util.FxmlLoadingUtils.loadFxml;
 import javafx.beans.DefaultProperty;
-import javafx.fxml.FXML;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.fxml.FXMLLoader;
 
 /**
  * 設定ポップオーバー。
@@ -15,22 +13,16 @@ import javafx.scene.control.TextField;
 public class ConfigPopOver extends PopOver {
 
     /**
-     * ユーザIDフィールド。
+     * コントローラ。
      */
-    @FXML
-    private TextField userIdField;
-
-    /**
-     * パスワードフィールド。
-     */
-    @FXML
-    private PasswordField passwordField;
+    private final ConfigPopOverController controller;
 
     /**
      * コンストラクタ。
      */
     public ConfigPopOver() {
-        loadControlledFxml(ConfigPopOver.class, this);
+        FXMLLoader loader = loadFxml(ConfigPopOver.class, this);
+        controller = loader.getController();
     }
 
     /**
@@ -39,7 +31,7 @@ public class ConfigPopOver extends PopOver {
      * @return ユーザID。
      */
     public String getUserId() {
-        return userIdField.getText();
+        return controller.getUserId();
     }
 
     /**
@@ -48,7 +40,7 @@ public class ConfigPopOver extends PopOver {
      * @return パスワード。
      */
     public String getPassword() {
-        return passwordField.getText();
+        return controller.getPassword();
     }
 
 }

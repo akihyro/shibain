@@ -9,9 +9,11 @@
 <?import javafx.scene.web.*?>
 <?import org.controlsfx.glyphfont.*?>
 
-<fx:root type="akihyro.shibain.main.MainPane"
-    xmlns="http://javafx.com/javafx/8"
-    xmlns:fx="http://javafx.com/fxml">
+<fx:root fx:id="root"
+        type="akihyro.shibain.main.MainPane"
+        fx:controller="akihyro.shibain.main.MainPaneController"
+        xmlns="http://javafx.com/javafx/8"
+        xmlns:fx="http://javafx.com/fxml">
 
     <stylesheets>
         <URL value="@MainPane.css" />
@@ -25,8 +27,8 @@
                 onAction="#checkin">
             <graphic>
                 <Glyph fontFamily="FontAwesome"
-                       icon="SIGN_IN"
-                       styleClass="opsButtonIcon" />
+                        icon="SIGN_IN"
+                        styleClass="opsButtonIcon" />
             </graphic>
         </Button>
         <Button text="退勤"
@@ -36,16 +38,16 @@
                 onAction="#checkout">
             <graphic>
                 <Glyph fontFamily="FontAwesome"
-                       icon="SIGN_OUT"
-                       styleClass="opsButtonIcon" />
+                        icon="SIGN_OUT"
+                        styleClass="opsButtonIcon" />
             </graphic>
         </Button>
         <Button styleClass="opsButton"
                 onAction="#toggleConfig">
             <graphic>
                 <Glyph fontFamily="FontAwesome"
-                       icon="GEAR"
-                       styleClass="opsButtonIcon" />
+                        icon="GEAR"
+                        styleClass="opsButtonIcon" />
             </graphic>
         </Button>
     </HBox>
