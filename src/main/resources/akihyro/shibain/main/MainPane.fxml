@@ -42,7 +42,8 @@
                         styleClass="opsButtonIcon" />
             </graphic>
         </Button>
-        <Button styleClass="opsButton"
+        <Button fx:id="configButton"
+                styleClass="opsButton"
                 onAction="#toggleConfig">
             <graphic>
                 <Glyph fontFamily="FontAwesome"

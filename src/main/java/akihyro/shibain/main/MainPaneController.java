@@ -5,12 +5,11 @@ import java.util.ResourceBundle;
 
 import akihyro.shibain.config.ConfigPopOver;
 import akihyro.shibain.tsubaiso.TsubaisoWalker;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Bounds;
-import javafx.scene.Node;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.web.WebView;
 
 /**
@@ -23,6 +22,12 @@ public class MainPaneController implements Initializable {
      */
     @FXML
     private MainPane root;
+
+    /**
+     * 設定ボタン。
+     */
+    @FXML
+    private Button configButton;
 
     /**
      * WEBビュー。
@@ -49,12 +54,8 @@ public class MainPaneController implements Initializable {
 
     /**
      * 出勤する。
-     *
-     * @param event イベント。
-     * @throws Exception エラーが発生した場合。
      */
-    @FXML
-    public void checkin(ActionEvent event) throws Exception {
+    public void checkin() {
         tsubaisoWalker.loadLoginPage()
                 .thenCompose((v) -> tsubaisoWalker.login(configPopOver.getUserId(), configPopOver.getPassword()))
                 .thenCompose((v) -> tsubaisoWalker.punchIn())
@@ -68,12 +69,8 @@ public class MainPaneController implements Initializable {
 
     /**
      * 退勤する。
-     *
-     * @param event イベント。
-     * @throws Exception エラーが発生した場合。
      */
-    @FXML
-    public void checkout(ActionEvent event) throws Exception {
+    public void checkout() {
         tsubaisoWalker.loadLoginPage()
                 .thenCompose((v) -> tsubaisoWalker.login(configPopOver.getUserId(), configPopOver.getPassword()))
                 .thenCompose((v) -> tsubaisoWalker.punchOut())
@@ -87,15 +84,10 @@ public class MainPaneController implements Initializable {
 
     /**
      * 設定の表示を切り替える。
-     *
-     * @param event イベント。
-     * @throws Exception エラーが発生した場合。
      */
-    @FXML
-    public void toggleConfig(ActionEvent event) throws Exception {
+    public void toggleConfig() {
         if (!configPopOver.isShowing()) {
-            Node node = Node.class.cast(event.getSource());
-            Bounds bounds = node.localToScreen(node.getBoundsInLocal());
+            Bounds bounds = configButton.localToScreen(configButton.getBoundsInLocal());
             configPopOver.show(root,
                     bounds.getMinX() + bounds.getWidth() / 2,
                     bounds.getMinY() + bounds.getHeight() - 10);
