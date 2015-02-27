@@ -2,6 +2,7 @@ package akihyro.shibain.tsubaiso;
 
 import java.util.concurrent.CompletableFuture;
 
+import lombok.Getter;
 import lombok.NonNull;
 
 import javafx.scene.web.WebEngine;
@@ -14,6 +15,7 @@ public class TsubaisoWalker {
     /**
      * WEBエンジン。
      */
+    @Getter
     private final WebEngine engine;
 
     /**
