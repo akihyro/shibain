@@ -1,13 +1,24 @@
 package akihyro.shibain.config;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 /**
  * 設定ポップオーバーコントローラ。
  */
-public class ConfigPopOverController {
+public class ConfigPopOverController implements Initializable {
+
+    /**
+     * ルート。
+     */
+    @FXML
+    private ConfigPopOver root;
 
     /**
      * ユーザIDフィールド。
@@ -21,22 +32,14 @@ public class ConfigPopOverController {
     @FXML
     private PasswordField passwordField;
 
-    /**
-     * ユーザIDを取得する。
-     *
-     * @return ユーザID。
-     */
-    public String getUserId() {
-        return userIdField.getText();
-    }
+    /** {@inheritDoc} */
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
 
-    /**
-     * パスワードを取得する。
-     *
-     * @return パスワード。
-     */
-    public String getPassword() {
-        return passwordField.getText();
+        // プロパティを同期させる
+        Bindings.bindBidirectional(userIdField.textProperty(), root.userIdProperty());
+        Bindings.bindBidirectional(passwordField.textProperty(), root.passwordProperty());
+
     }
 
 }
