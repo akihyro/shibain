@@ -17,6 +17,6 @@
     -fx-font-size: 40;
 }
 
-.webView {
+.webViewWrapper {
     -fx-pref-height: 0;
 }

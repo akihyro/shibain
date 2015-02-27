@@ -50,8 +50,11 @@
         </Button>
     </HBox>
 
-    <WebView fx:id="webView"
-            VBox.vgrow="ALWAYS"
-            styleClass="webView" />
+    <HBox
+        VBox.vgrow="ALWAYS"
+        styleClass="webViewWrapper">
+        <WebView fx:id="webView"
+                HBox.hgrow="ALWAYS" />
+    </HBox>
 
 </fx:root>
