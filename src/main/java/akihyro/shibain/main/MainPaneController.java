@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Bounds;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.web.WebView;
 
@@ -60,9 +61,19 @@ public class MainPaneController implements Initializable {
                 .thenCompose((v) -> tsubaisoWalker.login(configPopOver.getUserId(), configPopOver.getPassword()))
                 .thenCompose((v) -> tsubaisoWalker.punchIn())
                 .thenRun(() -> {
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setHeaderText("出勤");
-                    alert.setContentText("出勤しました！");
+                    Alert alert = new Alert(AlertType.INFORMATION);
+                    alert.setHeaderText("出勤しました！");
+                    alert.setResizable(true);
+                    alert.show();
+                })
+                .whenComplete((v, e) -> {
+                    if (e == null) {
+                        return;
+                    }
+                    Alert alert = new Alert(AlertType.ERROR);
+                    alert.setHeaderText("出勤に失敗しました！");
+                    alert.setContentText(e.getLocalizedMessage());
+                    alert.setResizable(true);
                     alert.show();
                 });
     }
@@ -76,8 +87,18 @@ public class MainPaneController implements Initializable {
                 .thenCompose((v) -> tsubaisoWalker.punchOut())
                 .thenRun(() -> {
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setHeaderText("退勤");
-                    alert.setContentText("退勤しました！");
+                    alert.setHeaderText("退勤しました！");
+                    alert.setResizable(true);
+                    alert.show();
+                })
+                .whenComplete((v, e) -> {
+                    if (e == null) {
+                        return;
+                    }
+                    Alert alert = new Alert(AlertType.ERROR);
+                    alert.setHeaderText("退勤に失敗しました！");
+                    alert.setContentText(e.getLocalizedMessage());
+                    alert.setResizable(true);
                     alert.show();
                 });
     }
