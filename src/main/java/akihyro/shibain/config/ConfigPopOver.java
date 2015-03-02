@@ -1,10 +1,12 @@
 package akihyro.shibain.config;
 
+import java.util.prefs.Preferences;
+
 import org.controlsfx.control.PopOver;
 
+import akihyro.shibain.property.PreferencesStringProperty;
 import static akihyro.shibain.util.FxmlLoadingUtils.loadFxml;
 import javafx.beans.DefaultProperty;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 /**
@@ -14,14 +16,19 @@ import javafx.beans.property.StringProperty;
 public class ConfigPopOver extends PopOver {
 
     /**
+     * プリファレンス。
+     */
+    private final Preferences prefs = Preferences.userNodeForPackage(ConfigPopOver.class);
+
+    /**
      * ユーザID。
      */
-    private final StringProperty userId = new SimpleStringProperty(this, "userId");
+    private final StringProperty userId = new PreferencesStringProperty(prefs, this, "userId", "");
 
     /**
      * パスワード。
      */
-    private final StringProperty password = new SimpleStringProperty(this, "password");
+    private final StringProperty password = new PreferencesStringProperty(prefs, this, "password", "");
 
     /**
      * コンストラクタ。
