@@ -60,7 +60,7 @@ public class TsubaisoWalker {
      */
     public CompletableFuture<Void> punchIn() {
         engine.executeScript("document.getElementById('punch_in_button').click()");
-        return WorkerStateFuture.completedFuture(null);
+        return CompletableFuture.completedFuture(null);
     }
 
     /**
@@ -70,7 +70,7 @@ public class TsubaisoWalker {
      */
     public CompletableFuture<Void> punchOut() {
         engine.executeScript("document.getElementById('punch_out_button').click()");
-        return WorkerStateFuture.completedFuture(null);
+        return CompletableFuture.completedFuture(null);
     }
 
     /**
